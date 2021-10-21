@@ -1,24 +1,23 @@
 console.log('Website is loaded....');
 
 const weatherForm = document.querySelector('form');
-const weatherInput = document.querySelector('input');
-const weatherLocation = document.querySelector('#weather-location');
-const weatherForecast = document.querySelector('#weather-forecast');
+const albumInput = document.querySelector('input');
+const albumTitle = document.querySelector('#album-title');
+const albumUser = document.querySelector('#album-user');
 
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    weatherLocation.textContent = 'Loading weather...';
-    weatherForecast.textContent = '';
+    albumTitle.textContent = 'Loading album...';
 
-    fetch(`/weather?userId=${weatherInput.value}`).then((response) => {
+    fetch(`/Album?userId=${albumInput.value}`).then((response) => {
         response.json().then((data) => {
             if (data.error) {
-                weatherLocation.textContent = data.message;
+                albumTitle.textContent = data.message;
                 console.log(data.error);
             } else {
-                weatherForecast.textContent = data.album.user[0].userId;
-                weatherLocation.textContent = data.album.user[0].title;
+                albumUser.textContent = data.album.user[0].userId;
+                albumTitle.textContent = data.album.user[0].title;
 
                 console.log(data.album.user[0].title)
 

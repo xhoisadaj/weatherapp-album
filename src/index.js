@@ -17,7 +17,7 @@ hbs.registerPartials(partialsDir);
 
 app.get('/', (req, res) => {
     res.render('home', {
-        title: 'Weather App',
+        title: 'Album App',
         name: 'Xhoi',
         surname: 'Sadaj',
     });
@@ -45,7 +45,7 @@ app.get('/help', (req, res) => {
     });
 });
 
-app.get('/weather', ((req, res) => {
+app.get('/Album', ((req, res) => {
     if (!req.query.userId) {
 
         return res.send({ error: req.query });
